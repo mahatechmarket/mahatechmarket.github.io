@@ -1,0 +1,16 @@
+<!doctype html>
+<html><head>
+<meta charset="utf-8">
+<script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+</head><body>
+<script>
+const MINI_APP_ID  = 'YOUR_MINI_APP_ID'; // コンソールで発行された ID
+const FORM_BASE = 'https://docs.google.com/forms/d/e/XXX/viewform?usp=pp_url&entry.1234567890=';
+
+(async () => {
+  await liff.init({ liffId: MINI_APP_ID });
+  const uid = (liff.getContext()?.userId) || (await liff.getProfile()).userId;
+  location.href = FORM_BASE + encodeURIComponent(uid);
+})();
+</script>
+</body></html>
